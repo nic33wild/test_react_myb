@@ -1,46 +1,63 @@
-import React, { Component } from "react";
+import React from "react";
 import { CardGroup } from "semantic-ui-react";
 import Fetch from "./Fetch";
 import { Card, Icon, Image } from "semantic-ui-react";
 
+const PATH = "/players/:id/friends";
 
-const extra = (
-  <div className="container">
-    <div>
-      <a>
-        <Icon name="calendar" />
-        16 events
-      </a>
-    </div>
-    <div>
-      <a>
-        <Icon name="users" />
-        160 Friends
-      </a>
-    </div>
-  </div>
+const FriendsTab = () => (
+  <Fetch path={PATH}>
+    {({ items, isLoading, error }) => {
+      if (!items) {
+        return <p>No data yet ...</p>;
+      }
+
+      if (error) {
+        return <p>{error.message}</p>;
+      }
+
+      if (isLoading) {
+        return <p>Loading ...</p>;
+      }
+
+      return (
+        <div>
+          <CardGroup itemsPerRow="3" stackable>
+            {items.map(item => (
+              <Card key={item.id}>
+                <Card.Content>
+                  <Image
+                    floated="left"
+                    size="tiny"
+                    rounded="true"
+                    src={item.picture}
+                  />
+                  <Card.Header>
+                    {item.first_name} {item.last_name}
+                  </Card.Header>
+                  <Card.Meta>Friend</Card.Meta>
+                  <Card.Content extra>
+                    <div>
+                      <a>
+                        <Icon name="calendar" />
+                        {item.total_events}
+                      </a>
+                    </div>
+                    <div>
+                      <a>
+                        <Icon name="users" />
+                        {item.total_friends}
+                      </a>
+                    </div>
+                  </Card.Content>
+                </Card.Content>
+              </Card>
+            ))}
+          </CardGroup>
+        </div>
+      );
+    }}
+  </Fetch>
 );
 
-export default class FriendsTab extends Component {
-  render() {
-    return (
-      <div>
-        <CardGroup>
-          <Card>
-            <Card.Content>
-              <Image
-                floated="left"
-                size="tiny"
-                rounded="true"
-                src="https://react.semantic-ui.com/images/avatar/large/steve.jpg"
-              />
-              <Card.Header>Steve Sanders</Card.Header>
-              <Card.Meta>Friends of Elliot</Card.Meta>
-              {extra}
-            </Card.Content>
-          </Card>
-        </CardGroup>
-      </div>
-    );
-  }
-}
+export default FriendsTab;

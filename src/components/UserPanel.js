@@ -13,10 +13,24 @@ const ColoredLine = ({ color }) => (
   />
 );
 
-export default class UserPanel extends Component {
-  render(props) {
-    return (
-      <Fetch>
+const PATH = '/players/:id';
+
+const UserPanel = () => (
+  <Fetch path={PATH}>
+    {({ items, isLoading, error }) => {
+      if (!items) {
+        return <p>No data yet ...</p>;
+      }
+
+      if (error) {
+        return <p>{error.message}</p>;
+      }
+
+      if (isLoading) {
+        return <p>Loading ...</p>;
+      }
+
+      return (
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
@@ -68,7 +82,9 @@ export default class UserPanel extends Component {
             </div>
           </div>
         </div>
-      </Fetch>
-    );
-  }
-}
+      );
+    }}
+  </Fetch>
+);
+
+export default UserPanel;

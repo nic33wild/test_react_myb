@@ -1,4 +1,5 @@
 import React, { Component, Children } from "react";
+import UserPanel from "./UserPanel";
 
 
 class Fetch extends Component {
@@ -38,14 +39,11 @@ class Fetch extends Component {
       } else if (!isLoaded) {
         return <div>Loading...</div>;
       } else {
-        return (
-            <div>
-            {Children.toArray(children)[this.state.current]}
-            </div>
-        );
+        return (this.props.children(this.state));
       }
     }
   }
   
 
 export default Fetch;
+
