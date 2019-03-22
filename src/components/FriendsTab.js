@@ -1,11 +1,15 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
+import OneFriend from "./OneFriend";
+import { CardGroup } from "semantic-ui-react";
 
 export default class FriendsTab extends Component {
   render() {
     return (
       <div>
-        <p>I am FriendsTab</p>
+        <CardGroup>
+          <OneFriend />
+        </CardGroup>
       </div>
-    )
+    );
   }
 }
