@@ -1,6 +1,7 @@
 /** @jsx jsx */
-import React, { Component } from "react";
+import React from "react";
 import { jsx } from "@emotion/core";
+import Fetch from "./Fetch";
 
 const ColoredLine = ({ color }) => (
   <hr
@@ -12,9 +13,7 @@ const ColoredLine = ({ color }) => (
   />
 );
 
-export default class UserPanel extends Component {
-  render() {
-    return (
+const UserPanel = props => (
       <div className="container">
         <div className="row">
           <div className="col-lg-12">
@@ -58,6 +57,6 @@ export default class UserPanel extends Component {
           </div>
         </div>
       </div>
-    );
-  }
-}
+  );
+
+  export default UserPanel;
