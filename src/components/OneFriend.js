@@ -18,18 +18,14 @@ const extra = (
   </div>
 );
 
-const description = [
-  "Amy is a violinist with 2 years experience in the wedding industry.",
-  "She enjoys the outdoors and currently resides in upstate New York."
-].join(" ");
-
-const CardExampleCardProps = () => (
+const OneFriend = () => (
   
     <Card>
       <Card.Content>
         <Image
           floated="left"
           size="tiny"
+          rounded="true"
           src="https://react.semantic-ui.com/images/avatar/large/steve.jpg"
         />
         <Card.Header>Steve Sanders</Card.Header>
@@ -39,4 +35,4 @@ const CardExampleCardProps = () => (
     </Card>
 );
 
-export default CardExampleCardProps;
+export default OneFriend;
