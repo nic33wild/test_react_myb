@@ -8,7 +8,9 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <ProfilePage />
+        <ProfilePage>
+        <Fetch />
+        </ProfilePage>
       </React.Fragment>
     );
   }
