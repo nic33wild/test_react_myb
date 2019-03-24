@@ -13,7 +13,7 @@ const ColoredLine = ({ color }) => (
   />
 );
 
-const PATH = '/players/:id';
+const PATH = '/players/1';
 
 const UserPanel = () => (
   <Fetch path={PATH}>
@@ -35,7 +35,7 @@ const UserPanel = () => (
           <div className="row">
             <div className="col-lg-12">
               <img
-                src="https://picsum.photos/200/200"
+                src={items.picture}
                 alt="User Image"
                 css={{
                   "border-radius": 20,
@@ -58,16 +58,16 @@ const UserPanel = () => (
                     color: "black"
                   }}
                 >
-                  Yanis Thomas
+                  {items.first_name} {items.last_name}
                 </h3>
-                <p>Works at Renard, Breton and Lucas</p>
+                <p>Works at {items.company}</p>
               </div>
               <div>
                 <p>
                   <em>
-                    Lives in West Mattéo <br />
+                    Lives in {items.city_name} <br />
                   </em>
-                  <em>Last seen 4 months ago</em>
+                  <em>Last seen {items.last_seen}</em>
                 </p>
               </div>
             </div>
@@ -75,10 +75,10 @@ const UserPanel = () => (
               <ColoredLine color="darkgray" />
             </div>
             <div className="col-lg-6">
-              <p>Events</p>
+              <p>{items.total_events}</p>
             </div>
             <div className="col-lg-6">
-              <p>friends</p>
+              <p>{items.total_friends}</p>
             </div>
           </div>
         </div>

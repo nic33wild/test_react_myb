@@ -1,6 +1,6 @@
 import React, { Component, Children } from "react";
-import UserPanel from "./UserPanel";
 
+const API_ROOT = 'http://localhost:5000';
 
 class Fetch extends Component {
   constructor(props) {
@@ -12,8 +12,11 @@ class Fetch extends Component {
     };
   }
 
-  componentDidMount() {
-    fetch("http://localhost:5000/players/1/friends")
+  
+
+  componentDidMount(path) {
+    path = this.props.path;
+    fetch(API_ROOT + path)
       .then(res => res.json())
       .then(json => {
         this.setState({
@@ -29,10 +32,16 @@ class Fetch extends Component {
       })
   }
 
+  componentDidUpdate(prevProps) {
+    // Typical usage (don't forget to compare props):
+    if (this.props.path !== prevProps.path) {
+      this.fetchData(this.props.path);
+      console.log(this.props.path)
+    }
+  }
+
   render() {
     const { error, isLoaded, items } = this.state;
-
-    const { children } =this.props;
 
     if (error) {
         return <div>Error: {error.message}</div>;

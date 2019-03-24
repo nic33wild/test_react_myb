@@ -3,7 +3,7 @@ import { CardGroup } from "semantic-ui-react";
 import Fetch from "./Fetch";
 import { Card, Icon, Image } from "semantic-ui-react";
 
-const PATH = "/players/:id/friends";
+const PATH = "/players/1/friends";
 
 const FriendsTab = () => (
   <Fetch path={PATH}>
