@@ -15,7 +15,22 @@ const ColoredLine = ({ color }) => (
 
 const PATH = '/players/1';
 
-const UserPanel = () => (
+export default class UserPanel extends Component{
+
+
+  lastSeen(d1){
+    let today = new Date();
+    let ytoday = today.getFullYear();
+    let months = (ytoday - d1.getFullYear()) * 12;
+    months -= d1.getMonth() + 1;
+    months += today.getMonth()+ 1;
+    console.log(months)
+    return months <= 0 ? "Last seen This month" : "Last seen "+ months +" months ago";
+  }
+
+render(){
+
+  return(
   <Fetch path={PATH}>
     {({ items, isLoading, error }) => {
       if (!items) {
@@ -67,7 +82,7 @@ const UserPanel = () => (
                   <em>
                     Lives in {items.city_name} <br />
                   </em>
-                  <em>Last seen {items.last_seen}</em>
+                  <em>{this.lastSeen(new Date(items.last_seen))}</em>
                 </p>
               </div>
             </div>
@@ -82,9 +97,9 @@ const UserPanel = () => (
             </div>
           </div>
         </div>
-      );
-    }}
+      )
+      }}
   </Fetch>
 );
-
-export default UserPanel;
+}
+}

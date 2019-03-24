@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
-import { CardGroup } from "semantic-ui-react";
+import { CardGroup, Card, Icon } from "semantic-ui-react";
 import Fetch from "./Fetch";
-import { Card, Icon } from "semantic-ui-react";
+
 
 const PATH = "/players/1/lastEvents";
-
-
 
 
 export default class UpcomingEventsTab extends Component{
@@ -19,6 +17,25 @@ export default class UpcomingEventsTab extends Component{
     months += d1.getMonth()+ 1;
     console.log(months);
     return months <= 0 ? "This month" : "in "+months+" months";
+  }
+
+  formatDate(date){
+    let monthNames = [
+      "January", "February", "March",
+      "April", "May", "June", "July",
+      "August", "September", "October",
+      "November", "December"
+    ];
+    let weekNames = [
+      "Monday", "Tuesday", "Wednesday",
+      "Thursday", "Friday", "Saturday", "Sunday"
+    ];
+    let dayofweek = date.getDay();
+    let day = date.getDate();
+    let month = date.getMonth();
+    let hour = date.getHours();
+    let minute = date.getMinutes();
+    return weekNames[dayofweek]+" "+day + " " + monthNames[month]+ " at " + hour + ":" +minute;
   }
 
 
@@ -44,11 +61,8 @@ export default class UpcomingEventsTab extends Component{
               <Card key={item.id}>
                 <Card.Content meta={this.monthsDiff(new Date(item.date))} />
                 <Card.Content>
-                  <div>
-                    <p></p>
-                    <h3>{item.name}</h3>
-                    <p>{item.date}</p>
-                  </div>
+                    <h2>{item.name}</h2>
+                    <p>{this.formatDate(new Date(item.date))}</p>
                   <Icon name="users" />
                   11 Participants
                 </Card.Content>
