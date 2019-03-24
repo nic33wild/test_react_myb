@@ -22,11 +22,6 @@ export default class ProfilePage extends Component {
 
   render() {
 
-    // let user ={
-    //     name: "Nicola",
-    //     hobbies: ["Sports","cars","Sports" ]
-    //   };
-
     return (
       <div>
         

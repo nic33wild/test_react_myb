@@ -18,7 +18,7 @@ class TabsComponent extends Component {
     })
 
     const TabBar = (
-      <Tabs defaultIndex={0} onSelect={index => this.setState({ index })}>
+      <Tabs defaultIndex={1} onSelect={index => this.setState({ index })}>
         <TabList>
           {title}
         </TabList>
