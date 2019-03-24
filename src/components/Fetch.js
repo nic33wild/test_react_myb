@@ -12,8 +12,6 @@ class Fetch extends Component {
     };
   }
 
-  
-
   componentDidMount(path) {
     path = this.props.path;
     fetch(API_ROOT + path)
