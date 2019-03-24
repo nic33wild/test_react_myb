@@ -22,7 +22,7 @@ class Content2 extends Component {
   }
 }
 
-export default class Tabs extends Component {
+export default class TwoTabs extends Component {
   render() {
     return (
       <div>
@@ -30,7 +30,7 @@ export default class Tabs extends Component {
           tabKey={"1"}
           style={{ width: 550, height: 500, background: "white" }}
           activeTabStyle={{ background: "#efefef", color: "black" }}
-          unActiveTabStyle={{ background: "white", color: "black" }}
+          unActiveTabStyle={{ background: "white", color: "gray" }}
           activeLeftTabBorderBottomStyle={{ background: "#424242", height: 4 }}
           activeRightTabBorderBottomStyle={{ background: "#424242", height: 4 }}
           tabsBorderBottomStyle={{ background: "#424242", height: 2 }}

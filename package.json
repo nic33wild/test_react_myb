@@ -3,11 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "emotion": "^10.0.9",
+    "@emotion/core": "^10.0.9",
+    "bootstrap": "^4.3.1",
     "react": "^16.8.4",
     "react-cool-tabs": "^1.1.6",
     "react-dom": "^16.8.4",
-    "react-scripts": "2.1.8"
+    "react-scripts": "2.1.8",
+    "react-tabs": "^3.0.0",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^0.86.0"
   },
   "scripts": {
     "start": "react-scripts start",
