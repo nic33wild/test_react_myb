@@ -1,5 +1,7 @@
+/** @jsx jsx */
 import React, { Component } from 'react'
 import { CardGroup, Card, Icon } from "semantic-ui-react";
+import { jsx } from "@emotion/core";
 import Fetch from "./Fetch";
 
 
@@ -38,8 +40,13 @@ export default class UpcomingEventsTab extends Component{
     return weekNames[dayofweek]+" "+day + " " + monthNames[month]+ " at " + hour + ":" +minute;
   }
 
+  numberOfParticipants(event){
+    return Object.keys(event).length + " Participants";
+  }
+
 
   render(){
+
       return (
         <Fetch path={PATH}>
         {({ items, isLoading, error }) => {
@@ -59,12 +66,12 @@ export default class UpcomingEventsTab extends Component{
           <CardGroup>
             {items.map(item => (
               <Card key={item.id}>
-                <Card.Content meta={this.monthsDiff(new Date(item.date))} />
                 <Card.Content>
-                    <h2>{item.name}</h2>
+                  {this.monthsDiff(new Date(item.date))}
+                  <h2>{item.name.toUpperCase()}</h2>
                     <p>{this.formatDate(new Date(item.date))}</p>
                   <Icon name="users" />
-                  11 Participants
+                  {this.numberOfParticipants(item.participants)}
                 </Card.Content>
               </Card>
             ))}
