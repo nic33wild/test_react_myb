@@ -21,6 +21,7 @@ class App extends Component {
     this.state = { active: "UpcomingEventsTab" };
   }
 
+  
   render() {
     const content = {
       UpcomingEventsTab: <div><UpcomingEventsTab/></div>,
