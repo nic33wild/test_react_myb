@@ -4,13 +4,12 @@ import Fetch from "./Fetch";
 import { Card, Icon, Image } from "semantic-ui-react";
 import { Link } from 'react-router-dom';
 
-const PATH = "/players/1/friends";
 
 export default class FriendsTab extends Component {
 
 
   render() { 
-    
+    console.log(this.props.match);
     return (
       
     <Fetch path={this.props.match.url}>

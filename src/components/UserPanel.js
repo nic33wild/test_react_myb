@@ -36,7 +36,7 @@ export default class UserPanel extends Component {
 
   render() {
     return (
-      <Fetch path={this.props.match.url}>
+      <Fetch path={PATH}>
         {({ items, isLoading, error }) => {
           if (!items) {
             return <p>No data yet ...</p>;
