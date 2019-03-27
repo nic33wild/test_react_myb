@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { CardGroup, Card, Icon } from "semantic-ui-react";
 import { jsx } from "@emotion/core";
 import Fetch from "./Fetch";
@@ -48,7 +48,7 @@ export default class UpcomingEventsTab extends Component{
   render(){
 
       return (
-        <Fetch path={PATH}>
+        <Fetch path={this.props.match.url}>
         {({ items, isLoading, error }) => {
           if (!items) {
             return <p>No data yet ...</p>;

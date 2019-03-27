@@ -31,10 +31,8 @@ class Fetch extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    // Typical usage (don't forget to compare props):
     if (this.props.path !== prevProps.path) {
       this.fetchData(this.props.path);
-      console.log(this.props.path)
     }
   }
 

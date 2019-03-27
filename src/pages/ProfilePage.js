@@ -3,6 +3,7 @@ import UserPanel from "../components/UserPanel";
 import TabsComponent from "../components/TabsComponent";
 import UpcomingEventsTab from "../components/UpcomingEventsTab";
 import FriendsTab from "../components/FriendsTab";
+import TabBarNew from "../components/TabBarNew";
 
 export default class ProfilePage extends Component {
 
@@ -33,10 +34,7 @@ export default class ProfilePage extends Component {
               <UserPanel />
             </div>
             <div className="col-9">
-              <TabsComponent>
-                  <UpcomingEventsTab title="Upcoming events"/>
-                  <FriendsTab title="Friends"/>
-              </TabsComponent>
+              <TabBarNew/>
             </div>
           </div>
         </div>

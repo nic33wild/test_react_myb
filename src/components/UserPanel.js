@@ -28,15 +28,15 @@ export default class UserPanel extends Component {
     let months = (ytoday - d1.getFullYear()) * 12;
     months -= d1.getMonth() + 1;
     months += today.getMonth() + 1;
-    console.log(months);
     return months <= 0
       ? "Last seen This month"
       : "Last seen " + months + " months ago";
   }
 
+
   render() {
     return (
-      <Fetch path={PATH}>
+      <Fetch path={this.props.match.url}>
         {({ items, isLoading, error }) => {
           if (!items) {
             return <p>No data yet ...</p>;

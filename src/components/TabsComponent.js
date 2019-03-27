@@ -10,15 +10,13 @@ class TabsComponent extends Component {
     this.state = {};
   }
 
-
-  render() {
-    
+  render() {    
     const title = this.props.children.map((props) => {
       return (<Tab key={props.props.title}>{props.props.title}</Tab>)
     })
 
     const TabBar = (
-      <Tabs defaultIndex={1} onSelect={index => this.setState({ index })}>
+      <Tabs defaultIndex={0} onSelect={index => this.setState({ index })}>
         <TabList>
           {title}
         </TabList>
