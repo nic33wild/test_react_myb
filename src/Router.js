@@ -1,31 +1,29 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
-import ProfilePage from './pages/ProfilePage';
 import FriendsTab from './components/FriendsTab';
 import UpcomingEventsTab from './components/UpcomingEventsTab';
 import UserPanel from './components/UserPanel';
+import App from './App';
 
 
 export default function() {
    return (
-      <Router>
+      {/* <Router>
          <Switch>
-         
-         <Route path="/players/1/upcoming" exact component={ProfilePage} />
          <Route path="/user/:id" exact component={UserPanel} />
          <Redirect from="/" exact to="/players/1/upcoming" />
             <Route
                path="/players/:id/lastEvents"
                component={UpcomingEventsTab}
             />
-            {/* <Redirect from="/" to="/players/1/upcoming" /> */}
+            <Redirect from="/" to="/players/1/upcoming" />
             <Redirect from="/players/:id" exact to="/players/:id/lastEvents" />
             <Route
                path="/players/:id/friends"
                component={FriendsTab}
             />
             </Switch>
-      </Router>
+      </Router> */}
    );
 }
 

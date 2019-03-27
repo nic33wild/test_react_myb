@@ -7,7 +7,6 @@ import Fetch from "./Fetch";
 
 const PATH = "/players/1/lastEvents";
 
-
 export default class UpcomingEventsTab extends Component{
 
   monthsDiff(d1){
@@ -48,7 +47,7 @@ export default class UpcomingEventsTab extends Component{
   render(){
 
       return (
-        <Fetch path={this.props.match.url}>
+        <Fetch path={PATH}>
         {({ items, isLoading, error }) => {
           if (!items) {
             return <p>No data yet ...</p>;

@@ -4,15 +4,15 @@ import Fetch from "./Fetch";
 import { Card, Icon, Image } from "semantic-ui-react";
 import { Link } from 'react-router-dom';
 
+const PATH = "/players/1/friends";
 
 export default class FriendsTab extends Component {
 
 
   render() { 
-    console.log(this.props.match);
     return (
       
-    <Fetch path={this.props.match.url}>
+    <Fetch path={PATH}>
       {({ items, isLoading, error }) => {
         if (!items) {
           return <p>No data yet ...</p>;
@@ -29,7 +29,6 @@ export default class FriendsTab extends Component {
         return (
           
           <div>
-          <h1>TEST{this.props.match.params.id}</h1>
             <CardGroup stackable>
               {items.map(item => (
                 <Card key={item.id}>
