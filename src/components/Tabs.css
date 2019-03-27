@@ -1,20 +1,20 @@
 .Tabs {
     position: relative;
     display: inline-block;
-    margin-bottom: 3px;
+    margin-bottom: 25px;
   }
   
   .Tabs__Tab {
     display: inline-block;
     padding: 1em;
     background: #ededed;
-    color: limegreen;
+    color: lightgray;
     cursor: pointer;
   }
   
   .Tabs__Tab:hover, .Tabs__Tab--active {
-    background: hotpink;
-    color: white;
+    background: white;
+    color: black;
   }
   
   .Tabs__Underline {
@@ -22,6 +22,6 @@
     top: 100%;
     left: 0;
     right: 0;
-    border-bottom: 3px solid orange;
+    border-bottom: 3px solid gray;
   }
   
