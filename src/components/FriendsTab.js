@@ -8,9 +8,20 @@ const PATH = "/players/1/friends";
 
 export default class FriendsTab extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      test: 'test',
+    }
+    this.els={};
+    
+  }
+
 
   render() { 
+    console.log(JSON.stringify(this.els, null, 2));
     return (
+      <div ref={el => this.root = el}>
       
     <Fetch path={PATH}>
       {({ items, isLoading, error }) => {
@@ -29,7 +40,7 @@ export default class FriendsTab extends Component {
         return (
           
           <div>
-            <CardGroup stackable>
+            <CardGroup itemsPerRow='3' stackable>
               {items.map(item => (
                 <Card key={item.id}>
                   <Card.Content>
@@ -67,6 +78,7 @@ export default class FriendsTab extends Component {
         )
       }}
     </Fetch>
+    </div>
     )
 }
 }

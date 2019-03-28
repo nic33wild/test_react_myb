@@ -12,11 +12,9 @@ export default class UpcomingEventsTab extends Component{
   monthsDiff(d1){
     let today = new Date();
     let ytoday = today.getFullYear();
-    console.log(d1,today);
     let months = (d1.getFullYear() - ytoday) * 12;
     months -= today.getMonth() + 1;
     months += d1.getMonth()+ 1;
-    console.log(months);
     return months <= 0 ? "This month" : "in "+months+" months";
   }
 

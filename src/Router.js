@@ -1,33 +1,43 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
-import FriendsTab from './components/FriendsTab';
-import UpcomingEventsTab from './components/UpcomingEventsTab';
-import UserPanel from './components/UserPanel';
-import App from './App';
-
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Redirect,
+  Switch
+} from "react-router-dom";
+import FriendsTab from "./components/FriendsTab";
+import UpcomingEventsTab from "./components/UpcomingEventsTab";
+import App from "./App";
+import UserPanel from "./components/UserPanel";
 
 export default function() {
-   return (
-      {/* <Router>
-         <Switch>
-         <Route path="/user/:id" exact component={UserPanel} />
-         <Redirect from="/" exact to="/players/1/upcoming" />
-            <Route
-               path="/players/:id/lastEvents"
-               component={UpcomingEventsTab}
-            />
-            <Redirect from="/" to="/players/1/upcoming" />
-            <Redirect from="/players/:id" exact to="/players/:id/lastEvents" />
-            <Route
-               path="/players/:id/friends"
-               component={FriendsTab}
-            />
-            </Switch>
-      </Router> */}
-   );
+  return (
+    <Router>
+      <Switch>
+      <Route
+          path="/players/1/upcoming"
+          render={props => (
+            <div>
+              <UserPanel />
+              <UpcomingEventsTab />
+              <FriendsTab />
+            </div>
+          )}
+        />
+        <Redirect from="/" exact to="/players/1/upcoming" />
+        <Redirect from="/players/:id" exact to="/players/:id/upcoming" />
+        <Route
+          path="/players/:id/upcoming"
+          component={({ match }) => <UpcomingEventsTab id={match.params.id} />}
+        />
+        <Route
+          path="/players/:id/friends"
+          component={({ match }) => <FriendsTab id={match.params.id} />}
+        />
+      </Switch>
+    </Router>
+  );
 }
-
-
 
 // function PrivateRoute(props) {
 //     return (
@@ -40,7 +50,8 @@ export default function() {
 //     );
 //  }
 
-            {/* <PrivateRoute path="/profile" component={ProfileClient} role="ROLE_USER" />
+{
+  /* <PrivateRoute path="/profile" component={ProfileClient} role="ROLE_USER" />
             <Route
                path="/salons/search/:id-:city"
                component={({ match }) => <SearchList id={match.params.id} city={match.params.city} />}
@@ -55,4 +66,5 @@ export default function() {
                role="ROLE_SALON"
             />
             <Route path="/monsalon" component={AdminSalon} />
-            <Route component={Error} /> */}
+            <Route component={Error} /> */
+}

@@ -7,7 +7,7 @@
   .Tabs__Tab {
     display: inline-block;
     padding: 1em;
-    background: #ededed;
+    background: white;
     color: lightgray;
     cursor: pointer;
   }

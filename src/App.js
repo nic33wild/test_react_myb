@@ -1,21 +1,16 @@
 import React, { Component } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import {
-  BrowserRouter as Router,
-  Route,
-  Redirect,
-  Switch
-} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import UserPanel from "./components/UserPanel";
-import TabBarNew from "./components/TabBarNew";
 import FriendsTab from "./components/FriendsTab";
 import UpcomingEventsTab from "./components/UpcomingEventsTab";
-import TabsComponent from "./components/TabsComponent";
 import Tabs from "./components/Tabs";
+import Router from "./Router";
 
 class App extends Component {
+  
   constructor(props) {
     super(props);
     this.state = { active: "UpcomingEventsTab" };
@@ -23,8 +18,29 @@ class App extends Component {
 
   render() {
     const content = {
-      UpcomingEventsTab: <div><UpcomingEventsTab/></div>,
-      FriendsTab: <div><FriendsTab/></div>,
+      UpcomingEventsTab: (
+        <div>
+          <UpcomingEventsTab />
+        </div>
+      ),
+      FriendsTab: (
+        <div>
+          <FriendsTab />
+        </div>
+      )
+    };
+
+    const tabBar = {
+      UpcomingEventsTab: (
+        <Link to={`/players/:id/upcoming`} className="link">
+          Upcoming Events
+        </Link>
+      ),
+      FriendsTab: (
+        <Link to={`/players/:id/friends`} className="link">
+          Friends
+        </Link>
+      )
     };
 
     return (
@@ -38,7 +54,7 @@ class App extends Component {
                     <UserPanel />
                   </div>
                   <div className="col-lg-9 col-xs-12">
-                    <Tabs
+                    {/* <Tabs
                       active={this.state.active}
                       onChange={active => this.setState({ active })}
                     >
@@ -47,7 +63,9 @@ class App extends Component {
                     </Tabs>
                     <div>
                       {content[this.state.active]}
-                    </div>
+                    </div> */}
+                    <div className="links" />
+                    <tabBar/>
                   </div>
                 </div>
               </div>
