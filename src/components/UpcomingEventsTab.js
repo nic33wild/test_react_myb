@@ -4,8 +4,8 @@ import { CardGroup, Card, Icon } from "semantic-ui-react";
 import { jsx } from "@emotion/core";
 import Fetch from "./Fetch";
 
-
-const PATH = "/players/1/lastEvents";
+const PATHS = '/players/';
+const PATHE = '/lastEvents';
 
 export default class UpcomingEventsTab extends Component{
 
@@ -45,7 +45,7 @@ export default class UpcomingEventsTab extends Component{
   render(){
 
       return (
-        <Fetch path={PATH}>
+        <Fetch path={PATHS + this.props.match.params.id + PATHE}>
         {({ items, isLoading, error }) => {
           if (!items) {
             return <p>No data yet ...</p>;

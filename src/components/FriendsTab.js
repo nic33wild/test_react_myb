@@ -4,26 +4,16 @@ import Fetch from "./Fetch";
 import { Card, Icon, Image } from "semantic-ui-react";
 import { Link } from 'react-router-dom';
 
-const PATH = "/players/1/friends";
 
 export default class FriendsTab extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      test: 'test',
-    }
-    this.els={};
-    
-  }
-
 
   render() { 
-    console.log(JSON.stringify(this.els, null, 2));
+    console.log(JSON.stringify(this.props.match, null, 2));
     return (
       <div ref={el => this.root = el}>
       
-    <Fetch path={PATH}>
+    <Fetch path={this.props.match.url}>
       {({ items, isLoading, error }) => {
         if (!items) {
           return <p>No data yet ...</p>;
