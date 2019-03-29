@@ -1,21 +1,25 @@
 import React, { Component } from "react";
-import { Switch, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import './Tabs.css';
-import '../Router';
+import "react-tabs/style/react-tabs.css";
 
-import UpcomingEventsTab from "./UpcomingEventsTab";
-import FriendsTab from "./FriendsTab";
-
+const PATHS = "/players/";
+const PATHEE = "/upcoming";
+const PATHEF = "/friends";
 
 class TabBarNew extends Component {
   render() {
-
-    return (   
-          <div>
-          <Link to={`/players/:id/upcoming`} >Upcoming Events</Link>
-          <Link to={`/players/:id/friends`} >Friends</Link>
-        </div>
+    return (
+      <div className="col-lg-9 col-xs-12 offset-lg-3">
+      <Tabs>
+        <TabList>
+          <Link to={PATHS + this.props.match.params.id + PATHEE}>
+            Upcoming Events
+          </Link>
+          <Link to={PATHS + this.props.match.params.id + PATHEF}>Friends</Link>
+        </TabList>
+      </Tabs>
+      </div>
     );
   }
 }

@@ -10,27 +10,48 @@ import UpcomingEventsTab from "./components/UpcomingEventsTab";
 import App from "./App";
 import UserPanel from "./components/UserPanel";
 import TabBarNew from "./components/TabBarNew";
-import Test from "./components/Test";
-import ProfilePage from "./Pages/ProfilePage";
 
 export default function() {
   return (
     <Router>
+      <div className="container">
       <Switch>
-      <Route path="/players/1/upcoming" exact component={ProfilePage}
-        />
-        <Redirect from="/" exact to="/players/1/friends" />
-        <Redirect from="/players/:id" exact to="/players/:id/friends" />
+      {/* <Route path="/players/1/upcoming" exact component={ProfilePage}
+        /> */}
+        {/* <Route
+          path="/players/1/upcoming"
+          component={({ match }) => (
+            <div>
+              <ProfilePage/>
+            </div>
+          )}
+        /> */}
+        <Redirect from="/" exact to="/players/1/upcoming" />
+        <Redirect from="/players/:id" exact to="/players/:id/upcoming" />
         <Route
           path="/players/:id/upcoming"
-          component={UpcomingEventsTab}
+          exact
+          component={({ match }) => (
+            <div className="row">
+              <TabBarNew match={match}/>
+              <UserPanel match={match}/>
+              <UpcomingEventsTab match={match}/>
+            </div>
+          )}
         />
         <Route
           path="/players/:id/friends"
-          component={FriendsTab}
+          exact
+          component={({ match }) => (
+            <div className="row">
+              <TabBarNew match={match}/>
+              <UserPanel match={match}/>
+              <FriendsTab match={match}/>
+            </div>
+          )}
         />
-        <Route path="/test/:id" component={Test} />
       </Switch>
+      </div>
     </Router>
   );
 }

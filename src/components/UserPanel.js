@@ -13,13 +13,7 @@ const ColoredLine = ({ color }) => (
   />
 );
 
-// const styledp = css`
-//       'margin-bottom': 0,
-//       fontWeight: "bold",
-//       'font-size': 25
-// `
-
-const PATH = "/players/1";
+const PATH = "/players/";
 
 export default class UserPanel extends Component {
   lastSeen(d1) {
@@ -33,10 +27,9 @@ export default class UserPanel extends Component {
       : "Last seen " + months + " months ago";
   }
 
-
   render() {
     return (
-      <Fetch path={PATH}>
+      <Fetch path={PATH + this.props.match.params.id}>
         {({ items, isLoading, error }) => {
           if (!items) {
             return <p>No data yet ...</p>;
@@ -51,75 +44,77 @@ export default class UserPanel extends Component {
           }
 
           return (
-            <div className="container">
-              <div className="row">
-                <div className="col-lg-12">
-                  <img
-                    src={items.picture}
-                    alt="User Image"
-                    css={{
-                      "border-radius": 20,
-                      "margin-top": 5,
-                      "margin-bottom": 5
-                    }}
-                  />
-                </div>
-                <div
-                  className="col-lg-12"
-                  css={{
-                    fontSize: 12,
-                    fontFamily: "Georgia, serif",
-                    color: "darkgray"
-                  }}
-                >
-                  <div>
-                    <h3
+            <div className="col-lg-3 col-xs-12">
+              <div className="container">
+                <div className="row">
+                  <div className="col-lg-12">
+                    <img
+                      src={items.picture}
+                      alt="User Image"
                       css={{
-                        color: "black"
+                        "border-radius": 20,
+                        "margin-top": 5,
+                        "margin-bottom": 5
+                      }}
+                    />
+                  </div>
+                  <div
+                    className="col-lg-12"
+                    css={{
+                      fontSize: 12,
+                      fontFamily: "Georgia, serif",
+                      color: "darkgray"
+                    }}
+                  >
+                    <div>
+                      <h3
+                        css={{
+                          color: "black"
+                        }}
+                      >
+                        {items.first_name} {items.last_name}
+                      </h3>
+                      <p>Works at {items.company}</p>
+                    </div>
+                    <div>
+                      <p>
+                        <em>
+                          Lives in {items.city_name} <br />
+                        </em>
+                        <em>{this.lastSeen(new Date(items.last_seen))}</em>
+                      </p>
+                    </div>
+                  </div>
+                  <div div className="col-lg-12">
+                    <ColoredLine color="darkgray" />
+                  </div>
+                  <div className="col-lg-6 text-center">
+                    <p
+                      css={{
+                        "margin-bottom": 0,
+                        fontWeight: "bold",
+                        "font-size": 25
                       }}
                     >
-                      {items.first_name} {items.last_name}
-                    </h3>
-                    <p>Works at {items.company}</p>
-                  </div>
-                  <div>
-                    <p>
-                      <em>
-                        Lives in {items.city_name} <br />
-                      </em>
-                      <em>{this.lastSeen(new Date(items.last_seen))}</em>
+                      {items.total_events}
                     </p>
+                    <em>events</em>
+                  </div>
+                  <div className="col-lg-6 text-center">
+                    <p
+                      css={{
+                        "margin-bottom": 0,
+                        fontWeight: "bold",
+                        "font-size": 25
+                      }}
+                    >
+                      {items.total_friends}
+                    </p>
+                    <em>friends</em>
                   </div>
                 </div>
-                <div div className="col-lg-12">
-                  <ColoredLine color="darkgray" />
-                </div>
-                <div className="col-lg-6 text-center">
-                  <p
-                    css={{
-                      "margin-bottom": 0,
-                      fontWeight: "bold",
-                      "font-size": 25
-                    }}
-                  >
-                    {items.total_events}
-                  </p>
-                  <em>events</em>
-                </div>
-                <div className="col-lg-6 text-center">
-                  <p
-                    css={{
-                      "margin-bottom": 0,
-                      fontWeight: "bold",
-                      "font-size": 25
-                    }}
-                  >
-                    {items.total_friends}
-                  </p>
-                  <em>friends</em>
-                </div>
+                <ColoredLine color="darkgray" />
               </div>
-              <ColoredLine color="darkgray" />
             </div>
           );
         }}

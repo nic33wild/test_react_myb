@@ -5,13 +5,13 @@ import { Card, Icon, Image } from "semantic-ui-react";
 import { Link } from 'react-router-dom';
 
 
+
 export default class FriendsTab extends Component {
 
 
   render() { 
     console.log(JSON.stringify(this.props.match, null, 2));
     return (
-      <div ref={el => this.root = el}>
       
     <Fetch path={this.props.match.url}>
       {({ items, isLoading, error }) => {
@@ -28,8 +28,7 @@ export default class FriendsTab extends Component {
         }
   
         return (
-          
-          <div>
+          <div className="col-lg-9 col-xs-12">
             <CardGroup itemsPerRow='3' stackable>
               {items.map(item => (
                 <Card key={item.id}>
@@ -68,7 +67,6 @@ export default class FriendsTab extends Component {
         )
       }}
     </Fetch>
-    </div>
     )
 }
 }
