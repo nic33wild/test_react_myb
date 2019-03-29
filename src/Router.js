@@ -16,16 +16,6 @@ export default function() {
     <Router>
       <div className="container">
       <Switch>
-      {/* <Route path="/players/1/upcoming" exact component={ProfilePage}
-        /> */}
-        {/* <Route
-          path="/players/1/upcoming"
-          component={({ match }) => (
-            <div>
-              <ProfilePage/>
-            </div>
-          )}
-        /> */}
         <Redirect from="/" exact to="/players/1/upcoming" />
         <Redirect from="/players/:id" exact to="/players/:id/upcoming" />
         <Route

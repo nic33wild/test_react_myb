@@ -12,17 +12,19 @@ class TabBarNew extends Component {
     return (
       <div className="col-lg-9 col-xs-12 offset-lg-3">
         <Tabs>
-        <TabList activeTabClassName='is-selected'>
-          <Tab>
-          <Link to={PATHS + this.props.match.params.id + PATHEE}>
-            Upcoming Events
-          </Link>
-        </Tab>
-        <Tab>
-          <Link to={PATHS + this.props.match.params.id + PATHEF}>Friends</Link>
-          </Tab>
-        </TabList>
-      </Tabs>
+          <TabList activeTabClassName="is-selected">
+            <Tab>
+              <Link to={PATHS + this.props.match.params.id + PATHEE}>
+                Upcoming Events
+              </Link>TEST
+            </Tab>
+            <Tab>
+              <Link to={PATHS + this.props.match.params.id + PATHEF}>
+                Friends
+              </Link>TEST
+            </Tab>
+          </TabList>
+        </Tabs>
       </div>
     );
   }
