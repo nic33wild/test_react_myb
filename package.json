@@ -10,6 +10,7 @@
     "react-cool-tabs": "^1.1.6",
     "react-dom": "^16.8.5",
     "react-router-dom": "^5.0.0",
+    "react-router-tabs": "^1.2.0",
     "react-scripts": "2.1.8",
     "react-tabs": "^3.0.0",
     "semantic-ui-css": "^2.4.1",
