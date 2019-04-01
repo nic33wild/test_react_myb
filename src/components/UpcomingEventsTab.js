@@ -59,7 +59,7 @@ export default class UpcomingEventsTab extends Component{
             return <p>Loading ...</p>;
           }
           return(
-        <div className="col-lg-9 col-xs-12">
+        <div className="col-lg-9 col-md-9 col-xs-12">
           <CardGroup>
             {items.map(item => (
               <Card key={item.id}>

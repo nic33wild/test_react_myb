@@ -28,8 +28,8 @@ export default class FriendsTab extends Component {
         }
   
         return (
-          <div className="col-lg-9 col-xs-12">
-            <CardGroup itemsPerRow='3' stackable>
+          <div className="col-lg-9 col-md-9 col-xs-12">
+            <CardGroup itemsPerRow='3' >
               {items.map(item => (
                 <Card key={item.id}>
                   <Card.Content>

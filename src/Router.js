@@ -9,7 +9,7 @@ import FriendsTab from "./components/FriendsTab";
 import UpcomingEventsTab from "./components/UpcomingEventsTab";
 import App from "./App";
 import UserPanel from "./components/UserPanel";
-import TabBarNew from "./components/TabBarNew";
+import TabsComponent from "./components/TabsComponent";
 
 export default function() {
   return (
@@ -23,7 +23,7 @@ export default function() {
           exact
           component={({ match }) => (
             <div className="row">
-              <TabBarNew match={match}/>
+              <TabsComponent match={match}/>
               <UserPanel match={match}/>
               <UpcomingEventsTab match={match}/>
             </div>
@@ -34,7 +34,7 @@ export default function() {
           exact
           component={({ match }) => (
             <div className="row">
-              <TabBarNew match={match}/>
+              <TabsComponent match={match}/>
               <UserPanel match={match}/>
               <FriendsTab match={match}/>
             </div>
