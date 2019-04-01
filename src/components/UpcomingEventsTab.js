@@ -1,21 +1,20 @@
-import React, { Component } from 'react'
+/** @jsx jsx */
+import React, { Component } from 'react';
 import { CardGroup, Card, Icon } from "semantic-ui-react";
+import { jsx } from "@emotion/core";
 import Fetch from "./Fetch";
 
-
-const PATH = "/players/1/lastEvents";
-
+const PATHS = '/players/';
+const PATHE = '/lastEvents';
 
 export default class UpcomingEventsTab extends Component{
 
   monthsDiff(d1){
     let today = new Date();
     let ytoday = today.getFullYear();
-    console.log(d1,today);
     let months = (d1.getFullYear() - ytoday) * 12;
     months -= today.getMonth() + 1;
     months += d1.getMonth()+ 1;
-    console.log(months);
     return months <= 0 ? "This month" : "in "+months+" months";
   }
 
@@ -38,10 +37,15 @@ export default class UpcomingEventsTab extends Component{
     return weekNames[dayofweek]+" "+day + " " + monthNames[month]+ " at " + hour + ":" +minute;
   }
 
+  numberOfParticipants(event){
+    return Object.keys(event).length + " Participants";
+  }
+
 
   render(){
+
       return (
-        <Fetch path={PATH}>
+        <Fetch path={PATHS + this.props.match.params.id + PATHE}>
         {({ items, isLoading, error }) => {
           if (!items) {
             return <p>No data yet ...</p>;
@@ -55,16 +59,16 @@ export default class UpcomingEventsTab extends Component{
             return <p>Loading ...</p>;
           }
           return(
-        <div>
+        <div className="col-lg-9 col-md-9 col-xs-12">
           <CardGroup>
             {items.map(item => (
               <Card key={item.id}>
-                <Card.Content meta={this.monthsDiff(new Date(item.date))} />
                 <Card.Content>
-                    <h2>{item.name}</h2>
+                  {this.monthsDiff(new Date(item.date))}
+                  <h2>{item.name.toUpperCase()}</h2>
                     <p>{this.formatDate(new Date(item.date))}</p>
                   <Icon name="users" />
-                  11 Participants
+                  {this.numberOfParticipants(item.participants)}
                 </Card.Content>
               </Card>
             ))}
